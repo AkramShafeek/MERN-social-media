@@ -9,6 +9,9 @@ import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
 import { register } from "./controllers/auth.js";
+import authRoutes from "./routes/auth.js";
+import usersRoutes from "./routes/users.js";
+import postsRoutes from "./routes/posts.js";
 
 // CONFIGURATIONS
 const __filename = fileURLToPath(import.meta.url);
@@ -35,6 +38,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
+
 // MONGOOSE SETUP
 const PORT = process.env.PORT || 6001;
 mongoose.connect(process.env.MONGO_URL, {
@@ -46,5 +50,17 @@ mongoose.connect(process.env.MONGO_URL, {
     console.log(`Did not connect due to error: ${error}`)
 });
 
+
 // ROUTES WITH FILES
-app.post("auth/register",upload.single("picture",register));
+app.post("/auth/register/", upload.single("picture"), register);
+app.post("/posts/")
+
+// ROUTES
+app.use("/auth/",authRoutes);
+app.use("/users/",usersRoutes);
+app.use("/posts/",postsRoutes);
+
+// testing
+// app.get('/',(req,res)=>{
+//     res.send('Working');
+// })
