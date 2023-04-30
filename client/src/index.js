@@ -18,6 +18,9 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { PersistGate } from 'redux-persist/integration/react';
 
+
+// I HAVE NO IDEA WHAT THE BELOW CODE IS ALL ABOUT 
+// GOTTA LEARN FROM REDUX-PERSIST DOCUMENTATION
 const persistConfig = { key: "root", storage, version: 1 };
 const persistedReducer = persistReducer(persistConfig, authReducer);
 const store = configureStore({
