@@ -3,13 +3,13 @@ import { Schema } from "mongoose";
 
 const UserSchema = new Schema(
     {
-        firstName: {
+        firstname: {
             type: String,
             required: true,
             min: 2,
             max: 50
         },
-        lastName: {
+        lastname: {
             type: String,
             required: true,
             min: 2,

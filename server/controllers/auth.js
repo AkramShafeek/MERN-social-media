@@ -5,8 +5,10 @@ import User from "../models/User.js";
 // SIGNING UP
 export const register = async (req, res) => {
     try {
+        console.log(req.body)
+        console.log(req.files)
         const {
-            firstName,
+            firstname,
             lastname,
             email,
             password,
@@ -20,7 +22,7 @@ export const register = async (req, res) => {
         const passwordHash = await bcrypt.hash(password, salt);
 
         const newUser = new User({
-            firstName,
+            firstname,
             lastname,
             email,
             password: passwordHash,
@@ -36,6 +38,7 @@ export const register = async (req, res) => {
         res.status(201).json(savedUser);
 
     } catch (error) {
+        console.log(error);
         res.status(500).json({ error: error.message });
     }
 }
@@ -44,6 +47,7 @@ export const register = async (req, res) => {
 // LOGGING IN
 export const login = async (req, res) => {
     try {
+        console.log(req.body);
         const { email, password } = req.body;
         const user = await User.findOne({ email: email })
 

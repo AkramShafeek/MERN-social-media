@@ -40,7 +40,7 @@ const Navbar = () => {
   const primaryLight = theme.palette.primary.light;
   const background = theme.palette.background.default;
 
-  // const fullName = `${user.firstName} ${user.lastName}`;
+  const fullName = user ? `${user.firstname} ${user.lastname}` : 'Some user';
 
   return (
     <FlexBetween padding="1rem 6%" backgroundColor={alt}>
@@ -86,9 +86,9 @@ const Navbar = () => {
           <Message sx={{ fontSize: "25px" }} />
           <Notifications sx={{ fontSize: "25px" }} />
           <Help sx={{ fontSize: "25px" }} />
-          <FormControl variant="standard" value={"Akram Shafeek"}>
+          <FormControl variant="standard" value={fullName}>
             <Select
-              value={"Akram Shafeek"}
+              value={fullName}
               sx={{
                 backgroundColor: neutralLight,
                 width: "150px",
@@ -104,8 +104,8 @@ const Navbar = () => {
               }}
               input={<InputBase />}
             >
-              <MenuItem value={"Akram Shafeek"}>
-                <Typography>Akram Shafeek</Typography>
+              <MenuItem value={fullName}>
+                <Typography>{fullName}</Typography>
               </MenuItem>
               <MenuItem onClick={() => dispatch(setLogout())}>
                 Logout
@@ -146,9 +146,9 @@ const Navbar = () => {
             <Message sx={{ fontSize: "25px" }} />
             <Notifications sx={{ fontSize: "25px" }} />
             <Help sx={{ fontSize: "25px" }} />
-            <FormControl variant="standard" value={"Akram Shafeek"}>
+            <FormControl variant="standard" value={fullName}>
               <Select
-                value={"Akram Shafeek"}
+                value={fullName}
                 sx={{
                   backgroundColor: neutralLight,
                   width: "150px",
@@ -164,8 +164,8 @@ const Navbar = () => {
                 }}
                 input={<InputBase />}
               >
-                <MenuItem value={"Akram Shafeek"}>
-                  <Typography>Akram Shafeek</Typography>
+                <MenuItem value={fullName}>
+                  <Typography>{fullName}</Typography>
                 </MenuItem>
                 <MenuItem onClick={() => dispatch(setLogout())}>
                   Logout
